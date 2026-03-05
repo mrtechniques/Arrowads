@@ -264,7 +264,8 @@ const Hero = () => {
       <div className="relative z-10 text-center px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="flex flex-col items-center"
         >
@@ -304,7 +305,8 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
           className="relative order-2 md:order-1"
         >
           <img
@@ -319,8 +321,8 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="order-1 md:order-2"
         >
           <span className="text-gold uppercase tracking-widest text-[10px] md:text-xs font-semibold mb-4 block">Our Story</span>
@@ -357,7 +359,7 @@ const Photographer = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2 relative"
           >
@@ -378,7 +380,7 @@ const Photographer = () => {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full lg:w-1/2"
           >
@@ -425,10 +427,16 @@ const Gallery = ({ images }: { images: GalleryImage[] }) => {
   return (
     <section id="gallery" className="py-16 md:py-24 px-6 relative overflow-hidden">
       <div className="bg-blob bg-blob-2 opacity-10"></div>
-      <div className="max-w-7xl mx-auto mb-12 md:mb-16 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto mb-12 md:mb-16 text-center"
+      >
         <span className="text-gold uppercase tracking-widest text-[10px] md:text-xs font-semibold mb-4 block">The Gallery</span>
         <h2 className="text-3xl md:text-5xl italic">Captured Moments</h2>
-      </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto masonry-grid gap-4">
         {images.map((image, index) => (
@@ -545,7 +553,12 @@ const Contact = () => {
       <div className="section-overlay"></div>
       <div className="bg-blob bg-blob-3 opacity-10"></div>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-20">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
           <span className="text-gold uppercase tracking-widest text-[10px] md:text-xs font-semibold mb-4 block">Get In Touch</span>
           <h2 className="text-3xl md:text-5xl mb-6 md:mb-8 leading-tight">
             Let's Start Your <br />
@@ -594,9 +607,15 @@ const Contact = () => {
             </a>
             <a href="tel:+919947894205" className="text-slate-400 hover:text-gold transition-colors"><Phone size={20} /></a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="bg-white/60 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-sm border border-white/40">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-white/60 backdrop-blur-md p-8 md:p-12 rounded-2xl shadow-sm border border-white/40"
+        >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -662,7 +681,7 @@ const Contact = () => {
               Send Message
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
