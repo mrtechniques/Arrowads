@@ -6,19 +6,34 @@
   --font-serif: "Playfair Display", serif;
 
   --color-gold: #D4AF37;
+  --color-gold-light: #F4E5B2;
   --color-champagne: #F7E7CE;
+  --color-ivory: #FCF9F4;
   --color-slate-custom: #2F4F4F;
+  --color-nude: #FDFBF7;
 }
 
 @layer base {
   body {
-    @apply font-sans text-slate-900 bg-[#FAFAFA] overflow-x-hidden;
-    cursor: none; /* Hide default cursor */
+    @apply font-sans text-slate-900 bg-nude overflow-x-hidden;
+    cursor: none;
+    /* Hide default cursor */
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif;
   }
-  a, button, input, textarea, [role="button"] {
+
+  a,
+  button,
+  input,
+  textarea,
+  [role="button"] {
     cursor: none;
   }
 }
@@ -77,10 +92,75 @@
 
 /* Hide cursor on mobile */
 @media (max-width: 768px) {
-  body, a, button {
+
+  body,
+  a,
+  button {
     cursor: auto;
   }
-  .cursor-follower, .cursor-dot {
+
+  .cursor-follower,
+  .cursor-dot {
     display: none;
   }
+}
+
+/* Photogenic Background Elements */
+.bg-blob {
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.bg-blob-1 {
+  background-color: var(--color-gold-light);
+  top: 10%;
+  left: -10%;
+}
+
+.bg-blob-2 {
+  background-color: var(--color-champagne);
+  top: 40%;
+  right: -10%;
+}
+
+.bg-blob-3 {
+  background-color: var(--color-gold-light);
+  bottom: 10%;
+  left: 20%;
+}
+
+.section-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.15;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.section-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(253, 251, 247, 0.95), rgba(253, 251, 247, 0.8), rgba(253, 251, 247, 0.95));
+  z-index: -1;
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
